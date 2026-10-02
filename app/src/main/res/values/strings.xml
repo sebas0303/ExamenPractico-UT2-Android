@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IsengardFraguas</string>
+
+    <string-array name="tipos_unidad">
+        <item>Guerrero</item>
+        <item>Arquero</item>
+        <item>Explorador</item>
+        <item>Berserker</item>
+    </string-array>
+</resources>
