@@ -36,9 +36,7 @@ class MainActivity : AppCompatActivity() {
             )
             insets
         }
-
-
-        // Referencia al EditText
+        // Capturar el identificador y equipamiento de las tropas
         val etIdentificador = findViewById<EditText>(R.id.etIdentificador)
         val spTipoUnidad = findViewById<Spinner>(R.id.spTipoUnidad)
         val rgEquipamiento = findViewById<RadioGroup>(R.id.rgEquipamiento)
@@ -50,7 +48,6 @@ class MainActivity : AppCompatActivity() {
 
         // Validar cuando el usuario abandona el campo
         etIdentificador.setOnFocusChangeListener { _, hasFocus ->
-
             if (!hasFocus && etIdentificador.text.toString().trim().isEmpty()) {
                 etIdentificador.error =
                     "El ejército no acepta soldados anónimos"
@@ -62,12 +59,9 @@ class MainActivity : AppCompatActivity() {
             val identificador = etIdentificador.text.toString().trim()
 
             if (identificador.isEmpty()) {
-
                 etIdentificador.error =
                     "El ejército no acepta soldados anónimos"
-
                 etIdentificador.requestFocus()
-
                 return@setOnClickListener
             }
 
@@ -81,18 +75,13 @@ class MainActivity : AppCompatActivity() {
                 "Sin equipamiento seleccionado"
             }
 
-            val llevaAntorcha = cbAntorcha.isChecked
-
             Log.d("FraguasIsengard", "ID: $identificador")
             Log.d("FraguasIsengard", "Tipo: $tipoUnidad")
             Log.d("FraguasIsengard", "Equipamiento: $equipamiento")
-            Log.d("FraguasIsengard", "Antorcha: $llevaAntorcha")
+            Log.d("FraguasIsengard", "Antorcha: ${cbAntorcha.isChecked}")
 
-            if (!llevaAntorcha) {
-                Log.e(
-                    "FraguasIsengard",
-                    "¡Peligro! Unidad enviada sin fuego"
-                )
+            cbAntorcha.setOnCheckedChangeListener { _, isChecked ->
+                if (!isChecked) Log.d("FraguasIsengard", "¡Peligro! Unidad enviada sin fuego")
             }
 
             Toast.makeText(
@@ -172,7 +161,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
         Log.d(
             "FraguasIsengard",
             "onStart: Las fraguas se encienden"
@@ -181,7 +169,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         Log.d(
             "FraguasIsengard",
             "onResume: Saruman supervisa la producción"
@@ -190,7 +177,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-
         Log.d(
             "FraguasIsengard",
             "onPause: Saruman detiene la producción temporalmente"
@@ -199,7 +185,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-
         Log.d(
             "FraguasIsengard",
             "onStop: Las fraguas quedan fuera de servicio"
@@ -208,7 +193,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-
         Log.d(
             "FraguasIsengard",
             "onDestroy: La Torre de Orthanc apaga sus fraguas"
