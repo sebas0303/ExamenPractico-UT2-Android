@@ -80,8 +80,8 @@ class MainActivity : AppCompatActivity() {
             Log.d("FraguasIsengard", "Equipamiento: $equipamiento")
             Log.d("FraguasIsengard", "Antorcha: ${cbAntorcha.isChecked}")
 
-            cbAntorcha.setOnCheckedChangeListener { _, isChecked ->
-                if (!isChecked) Log.d("FraguasIsengard", "¡Peligro! Unidad enviada sin fuego")
+            if (!cbAntorcha.isChecked) {
+                Log.d("FraguasIsengard", "¡Peligro! Unidad enviada sin fuego")
             }
 
             Toast.makeText(
