@@ -48,9 +48,11 @@ class MainActivity : AppCompatActivity() {
 
         // Validar cuando el usuario abandona el campo
         etIdentificador.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus && etIdentificador.text.toString().trim().isEmpty()) {
-                etIdentificador.error =
-                    "El ejército no acepta soldados anónimos"
+            if (!hasFocus){
+                if (etIdentificador.text.isEmpty()){
+                    etIdentificador.error =
+                        "El ejército no acepta soldados anónimos"
+                }
             }
         }
 
@@ -81,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("FraguasIsengard", "Antorcha: ${cbAntorcha.isChecked}")
 
             if (!cbAntorcha.isChecked) {
-                Log.d("FraguasIsengard", "¡Peligro! Unidad enviada sin fuego")
+                Log.e("FraguasIsengard", "¡Peligro! Unidad enviada sin fuego")
             }
 
             Toast.makeText(
@@ -154,48 +156,42 @@ class MainActivity : AppCompatActivity() {
         )
 
         Log.d(
-            "FraguasIsengard",
-            "onSaveInstanceState: Los capataces guardan los datos de la tropa"
+            "FraguasIsengard", "onSaveInstanceState: Los capataces guardan los datos de la tropa"
         )
     }
 
     override fun onStart() {
         super.onStart()
         Log.d(
-            "FraguasIsengard",
-            "onStart: Las fraguas se encienden"
+            "FraguasIsengard", "onStart: Las fraguas se encienden"
         )
     }
 
     override fun onResume() {
         super.onResume()
         Log.d(
-            "FraguasIsengard",
-            "onResume: Saruman supervisa la producción"
+            "FraguasIsengard", "onResume: Saruman supervisa la producción"
         )
     }
 
     override fun onPause() {
         super.onPause()
         Log.d(
-            "FraguasIsengard",
-            "onPause: Saruman detiene la producción temporalmente"
+            "FraguasIsengard", "onPause: Saruman detiene la producción temporalmente"
         )
     }
 
     override fun onStop() {
         super.onStop()
         Log.d(
-            "FraguasIsengard",
-            "onStop: Las fraguas quedan fuera de servicio"
+            "FraguasIsengard", "onStop: Las fraguas quedan fuera de servicio"
         )
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d(
-            "FraguasIsengard",
-            "onDestroy: La Torre de Orthanc apaga sus fraguas"
+            "FraguasIsengard", "onDestroy: La Torre de Orthanc apaga sus fraguas"
         )
     }
 }
